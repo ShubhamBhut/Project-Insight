@@ -14,7 +14,7 @@ st.sidebar.header("Project Insight")
 
 df = pd.read_csv('database.csv')
 
-st.write("You can select or unselect desired continents")
+st.write("You can select or unselect desired continents by clicking on their names")
 values = df.continent.value_counts()
 continents = ['Europe', 'North America', 'Asia', 'Africa', 'Unknown', 'South America', 'Ocenia']
 fig = px.pie(df, values=values, names=continents)
