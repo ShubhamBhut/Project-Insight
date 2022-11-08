@@ -13,6 +13,18 @@ timeline = st.multiselect('',['All', 'Preclassical Era', 'Classical Era', 'Medie
 st.sidebar.header("Project Insight")
 
 df = pd.read_csv('database.csv')
+df['birth_year'] = (
+    pd.to_numeric(df['birth_year'],
+                  errors='coerce')
+      .fillna(0)
+    )
+
+
+if "Preclassical Era" in timeline:
+    df_prehistoric = df.loc[df['birth_year'] < -600]
+    df = df_prehistoric
+else:
+    df = df
 
 st.write("You can select or unselect desired continents by clicking on their names")
 values = df.continent.value_counts()
