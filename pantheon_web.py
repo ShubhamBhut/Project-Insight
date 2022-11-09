@@ -38,3 +38,12 @@ else:
     continents = ['Europe', 'North America', 'Asia', 'Africa', 'Unknown', 'South America', 'Ocenia']
     fig = px.pie(df, values=values, names=continents)
     st.plotly_chart(fig, use_container_width=True)
+
+
+df_prehistoric = df.loc[df['birth_year'] < -600]
+continents_prehistoric = ['Unknown', 'Asia', 'Europe', 'Africa']
+
+if "Preclassical Era" in timeline:
+    df = df_prehistoric
+    continents = continents_prehistoric
+
