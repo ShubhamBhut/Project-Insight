@@ -18,32 +18,21 @@ df['birth_year'] = (
       .fillna(0)
     )
 
-if "Preclassical Era" in timeline:
-    df_prehistoric = df.loc[df['birth_year'] < -600]
-    continents_prehistoric = ['Unknown', 'Asia', 'Europe', 'Africa']
-    values = df_prehistoric.continent.value_counts()
-    continent_freq = {}
-    for continents_prehistoric in df_prehistoric.continent:
-        if continents_prehistoric in continent_freq:
-            continent_freq[continents_prehistoric] +=1
-        else :
-            continent_freq[continents_prehistoric] = 1
-
-    fig = px.pie(df_prehistoric, values=values, names=continents_prehistoric)
-    st.plotly_chart(fig, use_container_width=True)
-else:
-    df = df
-    st.write("You can select or unselect desired continents by clicking on their names")
-    values = df.continent.value_counts()
-    continents = ['Europe', 'North America', 'Asia', 'Africa', 'Unknown', 'South America', 'Ocenia']
-    fig = px.pie(df, values=values, names=continents)
-    st.plotly_chart(fig, use_container_width=True)
-
 
 df_prehistoric = df.loc[df['birth_year'] < -600]
 continents_prehistoric = ['Unknown', 'Asia', 'Europe', 'Africa']
 
+df_classical_temp = df.loc[df['birth_year'] < 476]
+df_classical = df_classical_temp.loc[df['birth_year']>-600]
+continents_classical = ['Europe', 'Unknown', 'Asia', 'Africa',]
+
 if "Preclassical Era" in timeline:
     df = df_prehistoric
     continents = continents_prehistoric
+elif "Classical Era" in timeline:
+    df = df_classical
+    continents = continents_classical
 
+values = df.continent.value_counts()
+fig = px.pie(df, values = values, names = continents)
+st.plotly_chart(fig)
