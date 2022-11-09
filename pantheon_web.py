@@ -7,7 +7,7 @@ st.title("Project Insight")
 
 st.header("Select the timeline")
 #timeline = st.selectbox('',['All', 'Preclassical Era', 'Classical Era', 'Medievel Era', 'Early modern Era', 'Era of Revolutions', 'Information Era'])
-timeline = st.multiselect('',['All', 'Preclassical Era', 'Classical Era', 'Medievel Era', 'Early-Modern Era', 'Era of REvolutions', 'Information Era'])
+timeline = st.multiselect('',['All', 'Preclassical Era', 'Classical Era', 'Medievel Era', 'Early-Modern Era', 'Era of REvolutions', 'Information Era'], ['All'])
 #st.write('The selected timeline is ', timeline)
 st.sidebar.header("Project Insight")
 
@@ -17,7 +17,7 @@ df['birth_year'] = (
                   errors='coerce')
       .fillna(0)
     )
-
+continents = ['Europe', 'North America', 'Asia', 'Africa', 'Unknown', 'South America', 'Ocenia']
 
 df_prehistoric = df.loc[df['birth_year'] < -600]
 continents_prehistoric = ['Unknown', 'Asia', 'Europe', 'Africa']
