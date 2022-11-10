@@ -26,8 +26,8 @@ df_classical_temp = df.loc[df['birth_year'] < 476]
 df_classical = df_classical_temp.loc[df['birth_year']>-600]
 continents_classical = ['Europe', 'Unknown', 'Asia', 'Africa',]
 
-df_medievel_temp = df.loc[cf['birth_year'] < 1450]
-df_medievel = df.loc[cf['birth_year'] > 476]
+df_medievel_temp = df.loc[df['birth_year'] < 1450]
+df_medievel = df.loc[df['birth_year'] > 476]
 
 
 
@@ -39,8 +39,13 @@ elif "Classical Era" in timeline:
     continents = continents_classical
 
 values = df.continent.value_counts()
-fig = px.pie(df, values = values, names = continents)
-st.plotly_chart(fig)
+fig1 = px.pie(df, values = values, names = continents)
+fig2 = px.bar(df, x=continents, y=values)
+
+st.plotly_chart(fig1)
+st.plotly_chart(fig2)
+
+
 
 
 
