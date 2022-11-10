@@ -41,10 +41,11 @@ elif "Classical Era" in timeline:
 values = df.continent.value_counts()
 fig1 = px.pie(df, values = values, names = continents)
 fig2 = px.bar(df, x=continents, y=values)
+fig3 = px.strip(df, x='continent', y='birth_year', color='sex')
 
 st.plotly_chart(fig1)
 st.plotly_chart(fig2)
-
+st.plotly_chart(fig3)
 
 
 
