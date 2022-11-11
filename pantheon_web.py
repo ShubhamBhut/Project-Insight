@@ -45,6 +45,7 @@ fig1 = px.pie(df, values = values, names = continents)
 fig2 = px.bar(df, x=continents, y=values)
 fig3 = px.strip(df, x='continent', y='birth_year', color='sex')
 #fig4 = px.bar(df, x='industry', y=df.industry.value_counts())
+fig7 = df.sort_values(by=["page_views"], ascending=False).iloc[:10]
 
 fig5 = plt.figure(figsize=(14,9))
 ax = sns.countplot(x='industry',data=df, order=df.industry.value_counts().iloc[:15].index)
@@ -66,7 +67,7 @@ st.plotly_chart(fig3)
 #st.plotly_chart(fig4)
 st.pyplot(fig5)
 st.plotly_chart(fig6)
-
+st.dataframe(fig7)
 
 
 
