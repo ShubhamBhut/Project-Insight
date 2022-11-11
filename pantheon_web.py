@@ -2,6 +2,8 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 import plotly_express as px
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 st.title("Project Insight")
 
@@ -42,12 +44,24 @@ values = df.continent.value_counts()
 fig1 = px.pie(df, values = values, names = continents)
 fig2 = px.bar(df, x=continents, y=values)
 fig3 = px.strip(df, x='continent', y='birth_year', color='sex')
-fig4 = px.bar(df, x='industry', y=df.industry.value_counts())
+#fig4 = px.bar(df, x='industry', y=df.industry.value_counts())
+
+fig5 = plt.figure(figsize=(14,9))
+ax = sns.countplot(x='industry',data=df, order=df.industry.value_counts().iloc[:15].index)
+ax.set_xticklabels(ax.get_xticklabels(), rotation=40, ha="right")
+ax.set(facecolor="black")
+plt.rcParams['axes.labelcolor'] = 'white'
+plt.rcParams['xtick.color'] = 'white'
+plt.rcParams['ytick.color'] = 'white'
+fig5.patch.set_facecolor('black')
+plt.tight_layout()
+st.pyplot(fig5)
+
 
 st.plotly_chart(fig1)
 st.plotly_chart(fig2)
 st.plotly_chart(fig3)
-st.plotly_chart(fig4)
+#st.plotly_chart(fig4)
 
 
 
