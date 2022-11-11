@@ -4,6 +4,7 @@ import streamlit as st
 import plotly_express as px
 import matplotlib.pyplot as plt
 import seaborn as sns
+import plotly.graph_objects as go
 
 st.title("Project Insight")
 
@@ -59,6 +60,14 @@ plt.tight_layout()
 
 fig6 = px.scatter(df, x='birth_year', y='historical_popularity_index', color='sex')
 
+fig8 = go.Figure(data=go.Scattergeo(
+        lon = df['longitude'],
+        lat = df['latitude'],
+        text = df['full_name'],
+        mode = 'markers',
+        marker_color = df['historical_popularity_index'],
+        ))
+
 
 
 st.plotly_chart(fig1)
@@ -68,6 +77,7 @@ st.plotly_chart(fig3)
 st.pyplot(fig5)
 st.plotly_chart(fig6)
 st.dataframe(fig7)
+st.plotly_chart(fig8)
 
 
 
