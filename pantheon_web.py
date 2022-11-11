@@ -55,15 +55,14 @@ plt.rcParams['xtick.color'] = 'white'
 plt.rcParams['ytick.color'] = 'white'
 fig5.patch.set_facecolor('black')
 plt.tight_layout()
-st.pyplot(fig5)
+
 
 
 st.plotly_chart(fig1)
 st.plotly_chart(fig2)
 st.plotly_chart(fig3)
 #st.plotly_chart(fig4)
-
-
+st.pyplot(fig5)
 
 
 
